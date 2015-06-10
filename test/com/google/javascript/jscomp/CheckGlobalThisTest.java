@@ -238,6 +238,18 @@ public final class CheckGlobalThisTest extends CompilerTestCase {
         "    {foo: function() { return this.foo; }}));");
   }
 
+  public void testObjectLiteral1() {
+    testFailure("var a = {b: function(){ return this.toString(); }}");
+  }
+
+  public void testObjectLiteral2() {
+    testSame("var a = {/** @this {Object}*/b:function(){ return this.toString(); }}");
+  }
+
+  public void testObjectLiteral3() {
+    testSame("var a = {b:/** @this {Object}*/function(){ return this.toString(); }}");
+  }
+
   public void testSuppressWarning() {
     testFailure("var x = function() { this.complex = 5; };");
   }

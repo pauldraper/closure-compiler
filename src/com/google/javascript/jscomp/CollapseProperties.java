@@ -1108,10 +1108,6 @@ class CollapseProperties implements CompilerPass {
         }
 
         p.getDeclaration().node = nameNode;
-
-        if (value.isFunction()) {
-          checkForHosedThisReferences(value, key.getJSDocInfo(), p);
-        }
       }
 
       numVars++;
